@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('updated_at', 'desc')->paginate(10);
 
         return view('contacts.index', compact('contacts'));
     }
@@ -40,7 +40,10 @@ class ContactController extends Controller
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
-            'email'=>'required'
+            'email' => 'email|required',
+            'job_title' => 'required',
+            'city' => 'required',
+            'country' => 'required'
         ]);
 
         $contact = new Contact([
@@ -95,7 +98,10 @@ class ContactController extends Controller
         $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
-            'email'=>'required'
+            'email' => 'email|required',
+            'job_title' => 'required',
+            'city' => 'required',
+            'country' => 'required'
         ]);
 
         $contact = Contact::findOrFail($id);

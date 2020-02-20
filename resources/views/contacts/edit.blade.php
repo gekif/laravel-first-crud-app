@@ -13,7 +13,6 @@
                         @endforeach
                     </ul>
                 </div>
-                <br />
             @endif
 
             <form method="post" action="{{ route('contacts.update', $contact->id) }}">
