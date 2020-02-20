@@ -98,7 +98,7 @@ class ContactController extends Controller
             'email'=>'required'
         ]);
 
-        $contact = Contact::findOtFail($id);
+        $contact = Contact::findOrFail($id);
 
         $contact->first_name =  $request->get('first_name');
         $contact->last_name = $request->get('last_name');
